@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSG Scroll Snap Carousel — MetaSkillGroup Components</title>
+  <meta name="description" content="A modern, responsive horizontal carousel built with native CSS scroll snap and Vanilla JavaScript. Smooth navigation, interactive pagination, mouse drag, and keyboard support.">
+  <meta name="author" content="MetaSkillGroup">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%236c5ce7'/%3E%3Cpath d='M12 27V13l8 9 8-9v14' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header" id="top">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="MSG Components home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="msgGradient" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7C5CFF"/>
+                <stop offset="1" stop-color="#2EC5C1"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="36" height="36" rx="11" fill="url(#msgGradient)"/>
+            <path d="M12 27V13l8 9 8-9v14" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand__name">MSG <span>COMPONENTS</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <i class="ri-menu-3-line" aria-hidden="true"></i>
+      </button>
+
+      <nav class="site-nav" id="primaryNav" aria-label="Primary navigation">
+        <a class="site-nav__link" href="#carousel">Components</a>
+        <a class="site-nav__link" href="#showcase">Showcase</a>
+        <a class="site-nav__link" href="#about">About</a>
+        <span class="site-nav__badge"><i class="ri-sparkling-2-line" aria-hidden="true"></i> Carousel / 001</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="showcase" aria-labelledby="heroTitle">
+      <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span> INTERACTIVE COMPONENT / 001</p>
+        <h1 class="hero__title" id="heroTitle">Explore What&rsquo;s Possible<span class="hero__dot">.</span></h1>
+        <p class="hero__description">
+          A beautifully restrained horizontal carousel powered by native CSS scroll snap and a
+          thin layer of Vanilla JavaScript. Drag, swipe, click, or use your keyboard &mdash; every
+          interaction lands exactly where it should.
+        </p>
+        <div class="hero__meta">
+          <span class="meta-chip"><i class="ri-css3-line" aria-hidden="true"></i> Native CSS Scroll Snap</span>
+          <span class="meta-chip"><i class="ri-javascript-line" aria-hidden="true"></i> Vanilla JavaScript</span>
+          <span class="meta-chip meta-chip--subtle"><i class="ri-accessibility-line" aria-hidden="true"></i> Accessible by default</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CAROUSEL ===================== -->
+    <section class="showcase" id="carousel" aria-labelledby="carouselTitle">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-label">THE COLLECTION</p>
+            <h2 class="section-title" id="carouselTitle">Features, in motion.</h2>
+            <p class="section-subtitle">Ten carefully crafted cards. One effortless experience.</p>
+          </div>
+          <div class="carousel__controls">
+            <button class="nav-arrow" id="prevButton" type="button" aria-label="Previous card" aria-controls="carouselViewport">
+              <i class="ri-arrow-left-line" aria-hidden="true"></i>
+            </button>
+            <button class="nav-arrow" id="nextButton" type="button" aria-label="Next card" aria-controls="carouselViewport">
+              <i class="ri-arrow-right-line" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel" id="carouselRoot" data-state="start">
+        <div class="carousel__fade carousel__fade--left" aria-hidden="true"></div>
+        <div class="carousel__fade carousel__fade--right" aria-hidden="true"></div>
+
+        <div class="carousel__viewport" id="carouselViewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Feature cards carousel">
+          <ul class="carousel__track" id="carouselTrack">
+            <li class="card card--violet" id="feature-1" role="group" aria-roledescription="slide" aria-label="1 of 10: Creative Design">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-palette-line" aria-hidden="true"></i></span>
+                  <span class="card__number">01 / 10</span>
+                </div>
+                <p class="card__category">Design</p>
+                <h3 class="card__title">Creative Design</h3>
+                <p class="card__text">Thoughtful composition, balanced color, and details that make every first impression count.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-1" aria-label="Explore Creative Design">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--blue" id="feature-2" role="group" aria-roledescription="slide" aria-label="2 of 10: Smart Technology">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-cpu-line" aria-hidden="true"></i></span>
+                  <span class="card__number">02 / 10</span>
+                </div>
+                <p class="card__category">Technology</p>
+                <h3 class="card__title">Smart Technology</h3>
+                <p class="card__text">Native browser capabilities do the heavy lifting, keeping every interaction remarkably quick.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-2" aria-label="Explore Smart Technology">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--mint" id="feature-3" role="group" aria-roledescription="slide" aria-label="3 of 10: Digital Innovation">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-lightbulb-flash-line" aria-hidden="true"></i></span>
+                  <span class="card__number">03 / 10</span>
+                </div>
+                <p class="card__category">Innovation</p>
+                <h3 class="card__title">Digital Innovation</h3>
+                <p class="card__text">A modern pattern for modern products, ready to adapt to whatever comes next.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-3" aria-label="Explore Digital Innovation">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--amber" id="feature-4" role="group" aria-roledescription="slide" aria-label="4 of 10: Performance First">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-rocket-2-line" aria-hidden="true"></i></span>
+                  <span class="card__number">04 / 10</span>
+                </div>
+                <p class="card__category">Performance</p>
+                <h3 class="card__title">Performance First</h3>
+                <p class="card__text">Zero frameworks, zero build steps, and a payload that gets out of your way.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-4" aria-label="Explore Performance First">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--rose" id="feature-5" role="group" aria-roledescription="slide" aria-label="5 of 10: User Experience">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-heart-3-line" aria-hidden="true"></i></span>
+                  <span class="card__number">05 / 10</span>
+                </div>
+                <p class="card__category">Experience</p>
+                <h3 class="card__title">User Experience</h3>
+                <p class="card__text">Every control is reachable, every state is clear, and every gesture feels natural.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-5" aria-label="Explore User Experience">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--indigo" id="feature-6" role="group" aria-roledescription="slide" aria-label="6 of 10: Modern Architecture">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-layout-3-line" aria-hidden="true"></i></span>
+                  <span class="card__number">06 / 10</span>
+                </div>
+                <p class="card__category">Architecture</p>
+                <h3 class="card__title">Modern Architecture</h3>
+                <p class="card__text">A small, readable codebase that stays easy to maintain as your product grows.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-6" aria-label="Explore Modern Architecture">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--cyan" id="feature-7" role="group" aria-roledescription="slide" aria-label="7 of 10: Seamless Integration">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-links-line" aria-hidden="true"></i></span>
+                  <span class="card__number">07 / 10</span>
+                </div>
+                <p class="card__category">Integration</p>
+                <h3 class="card__title">Seamless Integration</h3>
+                <p class="card__text">Drop it into any static page or serve it from any folder &mdash; no tooling required.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-7" aria-label="Explore Seamless Integration">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--lime" id="feature-8" role="group" aria-roledescription="slide" aria-label="8 of 10: Advanced Analytics">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-bar-chart-2-line" aria-hidden="true"></i></span>
+                  <span class="card__number">08 / 10</span>
+                </div>
+                <p class="card__category">Analytics</p>
+                <h3 class="card__title">Advanced Analytics</h3>
+                <p class="card__text">Clear signals, useful insights, and patterns that help you make better decisions.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-8" aria-label="Explore Advanced Analytics">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--orchid" id="feature-9" role="group" aria-roledescription="slide" aria-label="9 of 10: Future Ready">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-time-line" aria-hidden="true"></i></span>
+                  <span class="card__number">09 / 10</span>
+                </div>
+                <p class="card__category">Future</p>
+                <h3 class="card__title">Future Ready</h3>
+                <p class="card__text">Built on stable web standards that keep working long after trends move on.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-9" aria-label="Explore Future Ready">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <li class="card card--slate" id="feature-10" role="group" aria-roledescription="slide" aria-label="10 of 10: Endless Possibilities">
+              <article class="card__inner">
+                <div class="card__top">
+                  <span class="card__icon"><i class="ri-infinity-line" aria-hidden="true"></i></span>
+                  <span class="card__number">10 / 10</span>
+                </div>
+                <p class="card__category">Possibility</p>
+                <h3 class="card__title">Endless Possibilities</h3>
+                <p class="card__text">A foundation you can shape into something entirely your own. Start exploring.</p>
+                <div class="card__footer">
+                  <a class="card__link" href="#feature-10" aria-label="Explore Endless Possibilities">Explore <i class="ri-arrow-right-up-line" aria-hidden="true"></i></a>
+                  <span class="card__spark" aria-hidden="true"></span>
+                </div>
+              </article>
+            </li>
+
+            <!-- Trailing spacer lets the final card snap to the start edge. -->
+            <li class="carousel__spacer" aria-hidden="true"></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container carousel__bottom">
+        <p class="carousel__hint"><i class="ri-drag-move-2-line" aria-hidden="true"></i> Drag, swipe, or use arrow keys to explore</p>
+        <div class="carousel__dots" id="carouselDots" role="group" aria-label="Carousel pagination"></div>
+        <p class="carousel__count" aria-live="polite"><span id="currentSlide">01</span> <span class="carousel__count-sep">/</span> 10</p>
+      </div>
+    </section>
+
+    <!-- ===================== CLOSING STRIP ===================== -->
+    <section class="closing" id="about" aria-labelledby="closingTitle">
+      <div class="container closing__inner">
+        <div>
+          <p class="section-label">BUILT WITH CARE</p>
+          <h2 class="closing__title" id="closingTitle">Small component. Big polish.</h2>
+        </div>
+        <p class="closing__text">Crafted for the MetaSkillGroup component library by MetaSkillGroup. Standards-based, dependency-light, and ready for production.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <span class="site-footer__brand"><span class="site-footer__dot" aria-hidden="true"></span> MSG Scroll Snap Carousel</span>
+      <span class="site-footer__badge"><i class="ri-javascript-line" aria-hidden="true"></i> Vanilla JavaScript</span>
+      <span class="site-footer__copy">&copy; 2026 MetaSkillGroup. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
